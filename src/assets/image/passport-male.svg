@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 350 450" role="img" aria-label="Male passport placeholder">
+  <defs>
+    <linearGradient id="bgM" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#e8eef8"/>
+      <stop offset="100%" stop-color="#c5d0e6"/>
+    </linearGradient>
+  </defs>
+  <rect width="350" height="450" fill="url(#bgM)"/>
+  <ellipse cx="175" cy="155" rx="78" ry="88" fill="#6b7a94"/>
+  <path d="M70 450 C70 320 110 275 175 275 C240 275 280 320 280 450 Z" fill="#6b7a94"/>
+  <rect x="0" y="0" width="350" height="450" fill="none" stroke="#9aa8c0" stroke-width="8"/>
+</svg>

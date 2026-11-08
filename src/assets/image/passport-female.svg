@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 350 450" role="img" aria-label="Female passport placeholder">
+  <defs>
+    <linearGradient id="bgF" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#f3e8f0"/>
+      <stop offset="100%" stop-color="#dcc8d8"/>
+    </linearGradient>
+  </defs>
+  <rect width="350" height="450" fill="url(#bgF)"/>
+  <!-- hair shadow -->
+  <ellipse cx="175" cy="168" rx="102" ry="108" fill="#7a6b84"/>
+  <ellipse cx="175" cy="160" rx="74" ry="84" fill="#8a7b94"/>
+  <path d="M55 450 C55 318 100 278 175 278 C250 278 295 318 295 450 Z" fill="#8a7b94"/>
+  <rect x="0" y="0" width="350" height="450" fill="none" stroke="#b09ab0" stroke-width="8"/>
+</svg>

@@ -1,0 +1,181 @@
+.all-subjects-progress.progress-report {
+  min-height: auto;
+  padding: 14mm 15mm 12mm;
+  display: flex;
+  flex-direction: column;
+}
+
+.all-subjects-progress__summary {
+  margin-top: 10px;
+}
+
+.all-subjects-progress__legend {
+  position: relative;
+  z-index: 1;
+  margin: 10px 0 0;
+  font-family: system-ui, sans-serif;
+  font-size: 0.7rem;
+  line-height: 1.45;
+  color: var(--pr-muted);
+}
+
+.all-subjects-progress__block {
+  flex: 1 1 auto;
+  margin-top: 12px;
+}
+
+.all-subjects-progress__block h2 {
+  margin: 0 0 8px;
+  font-size: 0.88rem;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.all-subjects-progress__table-wrap {
+  overflow: visible;
+}
+
+.all-subjects-progress__table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: system-ui, sans-serif;
+  font-size: 0.74rem;
+  background: rgba(255, 255, 255, 0.72);
+}
+
+.all-subjects-progress__table th,
+.all-subjects-progress__table td {
+  padding: 7px 6px;
+  border-bottom: 1px solid rgba(215, 201, 163, 0.75);
+  text-align: left;
+  vertical-align: middle;
+}
+
+.all-subjects-progress__table th {
+  font-size: 0.64rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--pr-muted);
+  border-bottom: 2px solid var(--pr-gold);
+}
+
+.all-subjects-progress__table th:not(:first-child) {
+  text-align: center;
+}
+
+.all-subjects-progress__table--sittings th small {
+  display: block;
+  margin-top: 2px;
+  font-size: 0.56rem;
+  letter-spacing: 0.02em;
+  text-transform: none;
+  font-weight: 600;
+  color: var(--pr-muted);
+}
+
+.all-subjects-progress__sit-cell {
+  min-width: 92px;
+  text-align: left;
+  vertical-align: top;
+}
+
+.all-subjects-progress__progress-cell {
+  text-align: center;
+  white-space: nowrap;
+}
+
+.all-subjects-progress__progress-cell small {
+  display: block;
+  margin-top: 2px;
+  font-size: 0.6rem;
+  font-weight: 600;
+  color: var(--pr-muted);
+}
+
+.all-subjects-progress__progress-label {
+  letter-spacing: 0.02em;
+}
+
+.all-subjects-progress__sit-cell .overview-report__sit-list em.is-up {
+  color: var(--pr-up);
+}
+
+.all-subjects-progress__sit-cell .overview-report__sit-list em.is-down {
+  color: var(--pr-down);
+}
+
+.all-subjects-progress__table .is-up {
+  color: var(--pr-up);
+}
+
+.all-subjects-progress__table .is-down {
+  color: var(--pr-down);
+}
+
+.all-subjects-progress__table .is-flat {
+  color: var(--pr-muted);
+}
+
+.all-subjects-progress__core {
+  display: inline-block;
+  margin-left: 6px;
+  padding: 1px 5px;
+  border-radius: 999px;
+  border: 1px solid rgba(201, 162, 39, 0.45);
+  background: rgba(201, 162, 39, 0.12);
+  color: #8a6b10;
+  font-size: 0.58rem;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  vertical-align: middle;
+}
+
+.all-subjects-progress__status {
+  display: inline-block;
+  padding: 2px 7px;
+  border-radius: 999px;
+  font-size: 0.62rem;
+  font-weight: 800;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+}
+
+.all-subjects-progress__status.is-pass {
+  color: #14532d;
+  background: rgba(34, 197, 94, 0.14);
+}
+
+.all-subjects-progress__status.is-resit {
+  color: #9a3412;
+  background: rgba(249, 115, 22, 0.14);
+}
+
+.all-subjects-progress__status.is-empty {
+  color: var(--pr-muted);
+  background: rgba(91, 82, 120, 0.08);
+}
+
+.all-subjects-progress .progress-report__signoff {
+  margin-top: auto;
+  padding-top: 16px;
+}
+
+.all-subjects-progress .progress-report__footer-note {
+  margin-top: 10px;
+  font-size: 0.66rem;
+}
+
+@media print {
+  .all-subjects-progress.progress-report {
+    min-height: 297mm;
+    border: none;
+    box-shadow: none;
+  }
+
+  .all-subjects-progress--break {
+    page-break-after: always;
+    break-after: page;
+  }
+}

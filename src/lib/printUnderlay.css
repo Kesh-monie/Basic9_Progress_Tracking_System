@@ -1,0 +1,25 @@
+/* Body-level badge used by printReport() — visible on every printed page. */
+.report-print-underlay-live {
+  display: none;
+}
+
+@media print {
+  .report-print-underlay-live {
+    position: fixed !important;
+    inset: 0 !important;
+    display: grid !important;
+    place-items: center !important;
+    z-index: 2147483647 !important;
+    pointer-events: none !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  .report-print-underlay-live img {
+    width: min(62vw, 340px) !important;
+    max-width: 340px !important;
+    opacity: 0.16 !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+}

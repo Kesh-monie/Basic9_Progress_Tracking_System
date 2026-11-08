@@ -1,0 +1,303 @@
+.result-slip.progress-report {
+  min-height: auto;
+  padding: 14mm 15mm 12mm;
+  display: flex;
+  flex-direction: column;
+}
+
+.result-slip__block {
+  position: relative;
+  z-index: 1;
+  margin-top: 12px;
+  flex: 1 1 auto;
+}
+
+.result-slip__heading {
+  margin: 0 0 6px;
+  font-size: 0.88rem;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--pr-ink);
+}
+
+.result-slip__note {
+  margin: 0 0 10px;
+  font-family: system-ui, sans-serif;
+  font-size: 0.7rem;
+  line-height: 1.4;
+  color: var(--pr-muted);
+}
+
+.result-slip__table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: system-ui, sans-serif;
+  font-size: 0.76rem;
+  background: rgba(255, 255, 255, 0.72);
+}
+
+.result-slip__table th,
+.result-slip__table td {
+  padding: 7px 7px;
+  border-bottom: 1px solid rgba(215, 201, 163, 0.75);
+  text-align: left;
+  vertical-align: middle;
+}
+
+.result-slip__table th {
+  font-size: 0.66rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--pr-muted);
+  border-bottom: 2px solid var(--pr-gold);
+}
+
+.result-slip__table td:nth-child(2),
+.result-slip__table td:nth-child(3),
+.result-slip__table th:nth-child(2),
+.result-slip__table th:nth-child(3),
+.result-slip__table td:nth-child(5),
+.result-slip__table th:nth-child(5) {
+  text-align: center;
+  width: 12%;
+}
+
+.result-slip__table tr.is-counted td {
+  background: rgba(0, 168, 204, 0.06);
+}
+
+.result-slip__grade {
+  font-weight: 800;
+  font-size: 0.95rem;
+  color: var(--pr-ink);
+}
+
+.result-slip__core {
+  display: inline-block;
+  margin-left: 6px;
+  padding: 1px 6px;
+  border-radius: 999px;
+  background: rgba(201, 162, 39, 0.18);
+  color: #8a6d12;
+  font-size: 0.6rem;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  vertical-align: middle;
+}
+
+.result-slip__resit-hint {
+  display: block;
+  margin-top: 2px;
+  font-size: 0.64rem;
+  font-weight: 600;
+  color: var(--pr-muted);
+}
+
+.result-slip__aggregate {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: 110px 1fr;
+  gap: 12px;
+  align-items: center;
+  margin-top: 12px;
+  padding: 10px 12px;
+  border: 1px solid rgba(0, 168, 204, 0.35);
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.72);
+}
+
+.result-slip__agg-label {
+  margin: 0;
+  font-family: system-ui, sans-serif;
+  font-size: 0.66rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--pr-muted);
+}
+
+.result-slip__agg-value {
+  margin: 2px 0 0;
+  font-size: 1.75rem;
+  font-weight: 800;
+  line-height: 1;
+  color: var(--pr-sky);
+}
+
+.result-slip__agg-detail {
+  margin: 0;
+  font-family: system-ui, sans-serif;
+  font-size: 0.74rem;
+  line-height: 1.4;
+  color: var(--pr-muted);
+}
+
+.result-slip .progress-report__student {
+  padding: 10px;
+  gap: 14px;
+}
+
+.result-slip .progress-report__photo {
+  width: 70px;
+  height: 90px;
+}
+
+.result-slip .progress-report__school {
+  font-size: 1.25rem;
+}
+
+.result-slip .progress-report__rule {
+  margin: 12px 0 14px;
+}
+
+.result-slip .progress-report__signoff {
+  margin-top: auto;
+  padding-top: 18px;
+  gap: 14px;
+}
+
+.result-slip .progress-report__footer-note {
+  margin: 12px 0 0;
+  font-size: 0.68rem;
+}
+
+.result-slip--break {
+  page-break-after: always;
+  break-after: page;
+}
+
+@media print {
+  .result-slip.progress-report {
+    min-height: 297mm !important;
+    max-height: 297mm;
+    padding: 12mm 14mm 10mm !important;
+    overflow: hidden;
+    page-break-inside: avoid;
+    break-inside: avoid;
+    display: flex !important;
+    flex-direction: column;
+  }
+
+  .result-slip .progress-report__letterhead {
+    gap: 14px;
+    flex-shrink: 0;
+  }
+
+  .result-slip .progress-report__favicon {
+    width: 48px;
+    height: 48px;
+  }
+
+  .result-slip .progress-report__school {
+    font-size: 1.2rem;
+  }
+
+  .result-slip .progress-report__meta {
+    font-size: 0.76rem;
+  }
+
+  .result-slip .progress-report__doc-title {
+    font-size: 0.9rem;
+    margin-bottom: 6px;
+  }
+
+  .result-slip .progress-report__rule {
+    margin: 12px 0 12px;
+    height: 3px;
+    flex-shrink: 0;
+  }
+
+  .result-slip .progress-report__student {
+    padding: 10px 12px;
+    gap: 14px;
+    flex-shrink: 0;
+  }
+
+  .result-slip .progress-report__photo {
+    width: 68px;
+    height: 88px;
+  }
+
+  .result-slip .progress-report__student-grid {
+    gap: 8px 14px;
+  }
+
+  .result-slip .progress-report__student-grid strong {
+    font-size: 0.92rem;
+  }
+
+  .result-slip__block {
+    margin-top: 12px;
+    flex: 1 1 auto;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .result-slip__heading {
+    font-size: 0.84rem;
+    margin-bottom: 4px;
+  }
+
+  .result-slip__note {
+    margin-bottom: 8px;
+    font-size: 0.68rem;
+  }
+
+  .result-slip__table {
+    font-size: 0.74rem;
+    flex: 1 1 auto;
+  }
+
+  .result-slip__table th,
+  .result-slip__table td {
+    padding: 6px 7px;
+  }
+
+  .result-slip__grade {
+    font-size: 0.92rem;
+  }
+
+  .result-slip__resit-hint {
+    font-size: 0.62rem;
+  }
+
+  .result-slip__aggregate {
+    margin-top: 12px;
+    padding: 10px 12px;
+    gap: 12px;
+    flex-shrink: 0;
+  }
+
+  .result-slip__agg-value {
+    font-size: 1.65rem;
+  }
+
+  .result-slip__agg-detail {
+    font-size: 0.72rem;
+  }
+
+  .result-slip .progress-report__signoff {
+    margin-top: auto;
+    padding-top: 16px;
+    gap: 14px;
+    flex-shrink: 0;
+  }
+
+  .result-slip .progress-report__sign-line {
+    margin-bottom: 6px;
+  }
+
+  .result-slip .progress-report__footer-note {
+    margin-top: 10px;
+    font-size: 0.66rem;
+    flex-shrink: 0;
+  }
+
+  .result-slip--break {
+    page-break-after: always;
+    break-after: page;
+  }
+}

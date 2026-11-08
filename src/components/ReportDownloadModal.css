@@ -1,0 +1,114 @@
+.report-download-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 1200;
+  display: grid;
+  place-items: center;
+  padding: 20px;
+  background: rgba(8, 4, 24, 0.55);
+  backdrop-filter: blur(4px);
+}
+
+.report-download-modal__card {
+  width: min(460px, 100%);
+  max-height: min(88vh, 720px);
+  overflow: auto;
+  padding: 22px 20px 18px;
+  border-radius: 16px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.28);
+  text-align: left;
+  color: var(--ink);
+}
+
+.report-download-modal__card h2 {
+  margin: 0 0 6px;
+  font-size: 1.15rem;
+}
+
+.report-download-modal__card > p {
+  margin: 0 0 14px;
+  color: var(--muted);
+  font-size: 0.88rem;
+}
+
+.report-download-modal__section {
+  margin-bottom: 14px;
+}
+
+.report-download-modal__label {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.report-download-modal__options {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.report-download-modal__section + .report-download-modal__section {
+  margin-top: 2px;
+}
+
+.report-download-modal__option {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 12px;
+  border-radius: 10px;
+  border: 1px solid var(--line);
+  background: var(--surface-2);
+  cursor: pointer;
+  font-weight: 700;
+  font-size: 0.9rem;
+}
+
+.report-download-modal__option:has(input:checked) {
+  border-color: #00a8cc;
+  box-shadow: 0 0 0 2px rgba(0, 168, 204, 0.18);
+}
+
+.report-download-modal__error {
+  margin: 0 0 12px;
+  color: #b71c1c;
+  font-size: 0.84rem;
+  font-weight: 700;
+}
+
+.report-download-modal__actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+}
+
+.report-download-modal__btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 9px 14px;
+  border: none;
+  border-radius: 10px;
+  background: linear-gradient(135deg, #1e0058, #00a8cc);
+  color: #fff;
+  font-size: 0.82rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.report-download-modal__btn.is-ghost {
+  background: var(--surface-2);
+  color: var(--ink);
+  border: 1px solid var(--line);
+}
+
+.report-download-modal__btn:disabled {
+  opacity: 0.65;
+  cursor: wait;
+}

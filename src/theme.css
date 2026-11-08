@@ -1,0 +1,658 @@
+/* App-wide light / dark theme tokens */
+
+:root,
+html[data-theme='light'] {
+  color-scheme: light;
+  --page-bg: #f1f6fe;
+  --page-bg-soft: #e8eefc;
+  --surface: #ffffff;
+  --surface-2: #f8fbff;
+  --ink: #1e0058;
+  --ink-soft: #3a1a7a;
+  --muted: #615481;
+  --line: #d5deef;
+  --line-soft: #e6ebf5;
+  --accent-cyan: #00a8cc;
+  --accent-gold: #d4af37;
+  --danger: #b71c1c;
+  --ok: #1b5e20;
+  --shadow-soft: 0 10px 28px rgba(30, 0, 88, 0.06);
+  --shadow-card: 0 10px 28px rgba(30, 0, 88, 0.08);
+  --header-bg: linear-gradient(to right, #00d8ff, #1e0058);
+  --header-fg: #ffffff;
+  --header-muted: rgba(255, 255, 255, 0.78);
+  --header-border: transparent;
+  --header-blur: none;
+  --chip-bg: rgba(212, 175, 55, 0.18);
+  --chip-border: rgba(255, 224, 130, 0.55);
+  --chip-fg: #ffe082;
+  --theme-toggle-bg: rgba(255, 255, 255, 0.16);
+  --theme-toggle-border: rgba(255, 255, 255, 0.4);
+  --theme-toggle-hover: rgba(255, 255, 255, 0.28);
+  --modal-backdrop: rgba(16, 8, 40, 0.55);
+  --hero-panel: #ffffff;
+  --chart-track: #e8eef8;
+  --input-bg: #f8fbff;
+  --input-border: #d9e2f2;
+  --tag-bg: rgba(30, 0, 88, 0.08);
+  --row-hover: #eef6ff;
+  --warn-soft: #fff3e0;
+}
+
+html[data-theme='dark'] {
+  color-scheme: dark;
+  --page-bg: #0b0914;
+  --page-bg-soft: #120f1f;
+  --surface: #161225;
+  --surface-2: #1c1730;
+  --ink: #f3efff;
+  --ink-soft: #d9d0f5;
+  --muted: #a89bc8;
+  --line: #2f2950;
+  --line-soft: #262044;
+  --accent-cyan: #3ad7f0;
+  --accent-gold: #e6c35c;
+  --danger: #ff8a80;
+  --ok: #81c784;
+  --shadow-soft: 0 12px 32px rgba(0, 0, 0, 0.35);
+  --shadow-card: 0 14px 36px rgba(0, 0, 0, 0.4);
+  --header-bg: transparent;
+  --header-fg: #f7f3ff;
+  --header-muted: rgba(247, 243, 255, 0.72);
+  --header-border: rgba(255, 255, 255, 0.08);
+  --header-blur: blur(14px) saturate(1.2);
+  --chip-bg: rgba(58, 215, 240, 0.12);
+  --chip-border: rgba(58, 215, 240, 0.35);
+  --chip-fg: #9aeeff;
+  --theme-toggle-bg: rgba(255, 255, 255, 0.08);
+  --theme-toggle-border: rgba(255, 255, 255, 0.22);
+  --theme-toggle-hover: rgba(255, 255, 255, 0.16);
+  --modal-backdrop: rgba(4, 2, 12, 0.72);
+  --hero-panel: #161225;
+  --chart-track: #221c38;
+  --input-bg: #1a152c;
+  --input-border: #3a3358;
+  --tag-bg: rgba(58, 215, 240, 0.12);
+  --row-hover: #241e3a;
+  --warn-soft: rgba(255, 167, 38, 0.14);
+}
+
+html,
+body,
+#root {
+  background: var(--page-bg);
+  color: var(--muted);
+  transition:
+    background-color 0.28s ease,
+    color 0.28s ease;
+}
+
+/* ---- Header (transparent in dark) ---- */
+.site-header-wrap {
+  backdrop-filter: var(--header-blur);
+  -webkit-backdrop-filter: var(--header-blur);
+  border-bottom: 1px solid var(--header-border);
+  background: transparent;
+}
+
+html[data-theme='dark'] .site-header-wrap {
+  background: rgba(11, 9, 20, 0.35);
+}
+
+.site-header {
+  background: var(--header-bg) !important;
+  transition:
+    background 0.28s ease,
+    border-color 0.28s ease;
+}
+
+html[data-theme='dark'] .site-header {
+  background: transparent !important;
+}
+
+.site-header__title {
+  color: var(--header-fg) !important;
+}
+
+.site-header__subtitle {
+  color: var(--header-muted) !important;
+}
+
+.site-header__user-name,
+.site-header__signout {
+  color: var(--header-fg) !important;
+}
+
+.site-header__year {
+  background: var(--chip-bg) !important;
+  border-color: var(--chip-border) !important;
+  color: var(--header-fg) !important;
+}
+
+.site-header__year span,
+.site-header__user-role {
+  color: var(--chip-fg) !important;
+}
+
+.site-header__user-role {
+  background: var(--chip-bg) !important;
+}
+
+.site-header__signout {
+  border-color: var(--theme-toggle-border) !important;
+  background: var(--theme-toggle-bg) !important;
+}
+
+.site-header__signout:hover {
+  background: var(--theme-toggle-hover) !important;
+}
+
+.site-header__theme {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  margin-left: auto;
+  border: 1px solid var(--theme-toggle-border);
+  border-radius: 999px;
+  background: var(--theme-toggle-bg);
+  color: var(--header-fg);
+  cursor: pointer;
+  flex-shrink: 0;
+  overflow: hidden;
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease,
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.site-header__user .site-header__theme {
+  margin-left: 0;
+}
+
+.site-header__theme:hover {
+  background: var(--theme-toggle-hover);
+  transform: translateY(-1px);
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.18);
+}
+
+.site-header__theme:active {
+  transform: translateY(1px) scale(0.96);
+  box-shadow: none;
+}
+
+.site-header__theme:focus-visible {
+  outline: 2px solid var(--accent-gold);
+  outline-offset: 2px;
+}
+
+.site-header__theme-icon {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  transition:
+    opacity 0.28s ease,
+    transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.site-header__theme-icon.is-sun {
+  opacity: 1;
+  transform: rotate(0deg) scale(1);
+}
+
+.site-header__theme-icon.is-moon {
+  opacity: 0;
+  transform: rotate(-40deg) scale(0.5);
+}
+
+html[data-theme='dark'] .site-header__theme-icon.is-sun {
+  opacity: 0;
+  transform: rotate(40deg) scale(0.5);
+}
+
+html[data-theme='dark'] .site-header__theme-icon.is-moon {
+  opacity: 1;
+  transform: rotate(0deg) scale(1);
+}
+
+html[data-theme='dark'] .site-header__favicon {
+  margin-left: 0;
+}
+
+.site-header__end {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-shrink: 0;
+}
+
+.site-header__user {
+  margin-left: 0 !important;
+}
+
+/* ---- Shared page shells ---- */
+.home,
+.overview,
+.manage-page,
+.student-info,
+.student-list-page {
+  background: var(--page-bg) !important;
+  color: var(--muted);
+}
+
+.manage-page {
+  background:
+    radial-gradient(
+      circle at top right,
+      rgba(212, 175, 55, 0.1),
+      transparent 42%
+    ),
+    radial-gradient(
+      circle at bottom left,
+      rgba(0, 168, 204, 0.08),
+      transparent 40%
+    ),
+    var(--page-bg) !important;
+}
+
+html[data-theme='dark'] .manage-page {
+  background:
+    radial-gradient(
+      circle at top right,
+      rgba(230, 195, 92, 0.08),
+      transparent 42%
+    ),
+    radial-gradient(
+      circle at bottom left,
+      rgba(58, 215, 240, 0.07),
+      transparent 40%
+    ),
+    var(--page-bg) !important;
+}
+
+/* ---- Surfaces / cards (token-driven; reinforce for nested panels) ---- */
+.manage-sheet,
+.manage-form,
+.chart-card,
+.stats__card,
+.overview__chart-card,
+.insight-card,
+.student-card,
+.login-card,
+.year-modal__card,
+.student-info__profile,
+.student-info__report,
+.student-info__actions,
+.student-list-page__hero,
+.access-list__row,
+.student-draft,
+.bece-window,
+.year-stepper,
+.year-chip,
+.overview__subject-tile,
+.overview__students,
+.overview__student-filters,
+.overview__rich-panel,
+.overview__meter,
+.bulk-table,
+.passport-frame,
+.manage-tabs,
+.manage-page__panel {
+  background: var(--surface) !important;
+  border-color: var(--line) !important;
+  box-shadow: var(--shadow-soft);
+  color: var(--ink);
+}
+
+/* Colored KPI cards keep their own gradients — only sync text */
+.overview__card {
+  border-color: transparent;
+}
+
+.manage-page h1,
+.overview__title,
+.home-section__title,
+.login-card__title,
+.year-modal__title,
+.student-info__name,
+.student-list-page__title,
+.insight-card__title,
+.overview__chart-title,
+.manage-field,
+.manage-page__lead strong,
+.access-list__row strong,
+.student-card__name,
+.subject-bars__name,
+.subject-chart__name,
+.overview__extra-card h3,
+.overview__extra-head h3,
+.bulk-table__head,
+.year-modal__label,
+.student-info__label,
+.student-info__section-title {
+  color: var(--ink) !important;
+}
+
+.manage-page__lead,
+.chart-card__subtitle,
+.insight-card__subtitle,
+.overview__chart-subtitle,
+.login-card__hint,
+.year-modal__lead,
+.student-info__id,
+.student-list-page__subtitle,
+.student-list-page__meta,
+.access-list__row small,
+.stats__label,
+.subject-bars__value,
+.bar-chart__label,
+.bar-chart__year,
+.insight-attention__meta small,
+.insight-progress__item span,
+.overview__student-count,
+.overview__filter-label {
+  color: var(--muted) !important;
+}
+
+.manage-field input,
+.manage-field select,
+.manage-form input,
+.manage-form select,
+.manage-sheet select,
+.manage-sheet input,
+.login-field input,
+.login-field select,
+.bulk-table__row input,
+.bulk-table__row select,
+.overview__student-search input,
+.student-list-page__search input,
+.student-list-page__select select,
+.access-toolbar input,
+.year-modal input,
+.year-modal select,
+.overview__year-select select,
+.overview__filter-group select,
+.overview__filter-group input {
+  background: var(--input-bg) !important;
+  border-color: var(--input-border) !important;
+  color: var(--ink) !important;
+}
+
+.subject-bars__track,
+.student-info__timeline-track,
+.student-info__history-track,
+.chart-card .bar-chart__track,
+.subject-chart__track,
+.insight-sections__track,
+.overview__meter-track,
+.line-chart__plot,
+.bar-chart__track,
+.overview .bar-chart__track {
+  background: var(--chart-track) !important;
+}
+
+.hero__intro {
+  background: var(--hero-panel) !important;
+}
+
+.hero__tagline,
+.hero__message {
+  color: var(--ink) !important;
+}
+
+html[data-theme='dark'] .hero {
+  background: linear-gradient(120deg, #0f2a3a 0%, #1e0058 55%, #0b0914 100%);
+}
+
+html[data-theme='dark'] .hero__tagline span {
+  color: var(--accent-cyan);
+}
+
+.stats__value,
+.subject-chart__value,
+.bar-chart__value,
+.line-chart__value,
+.insight-gauge__text strong,
+.insight-attention__meta strong,
+.insight-sections__row strong,
+.insight-progress__item strong,
+.overview__subject-tile strong,
+.overview__year-stepper strong {
+  color: var(--ink) !important;
+}
+
+.overview__subject-tile small {
+  color: var(--muted) !important;
+}
+
+.overview__student-empty,
+.overview__rich-empty {
+  color: var(--muted);
+}
+
+.manage-form__error {
+  color: var(--danger) !important;
+}
+
+.manage-form__ok {
+  color: var(--ok) !important;
+}
+
+.login-modal,
+.year-modal {
+  background: var(--modal-backdrop) !important;
+}
+
+.btn-ghost,
+.manage-page__back,
+.student-info__back,
+.student-list-page__back,
+.overview__quick-btn.is-ash,
+.year-modal__cancel,
+.year-chip,
+.year-stepper button:not(.is-primary):not([disabled]) {
+  background: var(--surface-2) !important;
+  border-color: var(--line) !important;
+  color: var(--ink) !important;
+}
+
+.passport-frame,
+.access-list__passport,
+.student-info__photo,
+.overview__subject-logo,
+.overview__subject-logo-img {
+  background: var(--chart-track) !important;
+  border-color: var(--line) !important;
+}
+
+.overview__extra-tag,
+.student-list-page__chip,
+.manage-tabs__btn,
+.access-toolbar,
+.bulk-table__head,
+.student-info__meta-chip {
+  background: var(--tag-bg) !important;
+  color: var(--ink) !important;
+}
+
+.insight-attention__row:hover,
+.overview__extra-card li button:hover,
+.student-list-page__item:hover,
+.access-list__row:hover,
+.mark-list__row:hover {
+  background: var(--row-hover) !important;
+}
+
+html[data-theme='dark'] .overview__callout--gold {
+  background: linear-gradient(
+    135deg,
+    rgba(230, 195, 92, 0.16),
+    rgba(58, 215, 240, 0.1)
+  );
+  color: var(--ink);
+  border-color: rgba(230, 195, 92, 0.28);
+}
+
+html[data-theme='dark'] .overview__extra-card.is-gold {
+  background: linear-gradient(
+    180deg,
+    rgba(230, 195, 92, 0.16),
+    var(--surface) 55%
+  ) !important;
+  border-color: rgba(230, 195, 92, 0.35);
+}
+
+html[data-theme='dark'] .overview__extra-card.is-ash {
+  background: linear-gradient(
+    180deg,
+    rgba(168, 155, 200, 0.12),
+    var(--surface) 55%
+  ) !important;
+}
+
+html[data-theme='dark'] .student-list-page__item.is-rank-1 {
+  background: linear-gradient(
+    180deg,
+    rgba(255, 179, 0, 0.12),
+    var(--surface) 45%
+  ) !important;
+}
+
+html[data-theme='dark'] .student-list-page__item.is-rank-2 {
+  background: linear-gradient(
+    180deg,
+    rgba(144, 164, 174, 0.12),
+    var(--surface) 45%
+  ) !important;
+}
+
+html[data-theme='dark'] .student-list-page__item.is-rank-3 {
+  background: linear-gradient(
+    180deg,
+    rgba(196, 122, 58, 0.14),
+    var(--surface) 45%
+  ) !important;
+}
+
+html[data-theme='dark'] .student-card__status.is-pass,
+html[data-theme='dark'] .student-info__status.is-pass {
+  background: rgba(129, 199, 132, 0.16);
+  color: #b7efb9;
+}
+
+html[data-theme='dark'] .student-card__status.is-resit,
+html[data-theme='dark'] .student-info__status.is-resit {
+  background: rgba(255, 138, 128, 0.16);
+  color: #ffc1bb;
+}
+
+html[data-theme='dark'] .student-card__status.is-absent,
+html[data-theme='dark'] .student-card__status.is-empty,
+html[data-theme='dark'] .student-info__status.is-absent,
+html[data-theme='dark'] .student-info__status.is-empty {
+  background: rgba(168, 155, 200, 0.14);
+  color: var(--muted);
+}
+
+/* Footer credit strip only — keep brand purple/cyan footer intact */
+html[data-theme='dark'] .home-footer__credit {
+  background: var(--page-bg) !important;
+  border-color: var(--line) !important;
+  color: var(--muted) !important;
+}
+
+html[data-theme='dark'] .home-footer__credit a {
+  color: var(--accent-cyan) !important;
+}
+
+html[data-theme='dark'] .chart-card__badge {
+  background: rgba(58, 215, 240, 0.14);
+  color: #9aeeff;
+  border-color: rgba(58, 215, 240, 0.3);
+}
+
+html[data-theme='dark'] .overview__quick-btn.is-gold,
+html[data-theme='dark'] .overview__quick-btn.is-navy,
+html[data-theme='dark'] .site-header__signin {
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.35);
+}
+
+.site-header__end .site-header__favicon + .site-header__theme {
+  margin-left: 0;
+}
+
+html[data-theme='dark'] .bulk-table__head {
+  color: var(--muted);
+}
+
+html[data-theme='dark'] .insight-attention__row,
+html[data-theme='dark'] .mark-list__row,
+html[data-theme='dark'] .overview__rich-list li,
+html[data-theme='dark'] .overview__extra-card li button,
+html[data-theme='dark'] .student-info__history-row,
+html[data-theme='dark'] .student-info__mark-row,
+html[data-theme='dark'] .access-list__row,
+html[data-theme='dark'] .student-draft {
+  background: var(--surface-2) !important;
+  border-color: var(--line-soft) !important;
+  color: var(--ink);
+}
+
+html[data-theme='dark'] .line-chart__grid span,
+html[data-theme='dark'] .bar-chart__grid-row span,
+html[data-theme='dark'] .overview .bar-chart__grid-row span {
+  color: var(--muted) !important;
+  border-color: var(--line-soft) !important;
+}
+
+html[data-theme='dark'] .insight-gauge__track,
+html[data-theme='dark'] .overview__pass-track,
+html[data-theme='dark'] .overview__resit-track {
+  stroke: var(--line-soft) !important;
+}
+
+html[data-theme='dark'] .manage-tabs__btn.is-active,
+html[data-theme='dark'] .year-modal__option.is-active,
+html[data-theme='dark'] .bece-window__chip.is-active {
+  background: rgba(58, 215, 240, 0.16) !important;
+  border-color: rgba(58, 215, 240, 0.4) !important;
+  color: var(--ink) !important;
+}
+
+html[data-theme='dark'] .overview__meter-fill.is-warn,
+html[data-theme='dark'] .student-info__timeline-fill.is-warn {
+  background: linear-gradient(90deg, #ef6c00, #c62828);
+}
+
+/* Catch-all: any leftover light panel / ink text inside app shells */
+html[data-theme='dark'] .home *,
+html[data-theme='dark'] .overview *,
+html[data-theme='dark'] .manage-page *,
+html[data-theme='dark'] .student-info *,
+html[data-theme='dark'] .student-list-page *,
+html[data-theme='dark'] .login-modal *,
+html[data-theme='dark'] .year-modal * {
+  scrollbar-color: var(--line) var(--surface-2);
+}
+
+/* Keep white text on brand/accent surfaces */
+html[data-theme='dark'] .overview__subject-name,
+html[data-theme='dark'] .overview__year,
+html[data-theme='dark'] .overview__card,
+html[data-theme='dark'] .overview__card-label,
+html[data-theme='dark'] .overview__card-value,
+html[data-theme='dark'] .site-header__signin,
+html[data-theme='dark'] .btn-primary,
+html[data-theme='dark'] .manage-form > button:not(.is-secondary):not(.btn-ghost),
+html[data-theme='dark'] .login-card button[type='submit'],
+html[data-theme='dark'] .year-modal__save,
+html[data-theme='dark'] .overview__quick-btn.is-gold,
+html[data-theme='dark'] .student-info__section,
+html[data-theme='dark'] .overview__year-switch em,
+html[data-theme='dark'] .home-footer__meta-item span:not(.home-footer__meta-label),
+html[data-theme='dark'] .home-footer__text {
+  color: #fff !important;
+}

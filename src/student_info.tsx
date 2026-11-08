@@ -258,13 +258,16 @@ export default function StudentInfo() {
     }
     setDownloading(true)
     setDownloadError(null)
+    setDownloadOpen(false)
     sheet.classList.add('is-capturing')
     try {
-      await new Promise((resolve) => requestAnimationFrame(() => resolve(null)))
+      await new Promise((resolve) => window.setTimeout(resolve, 120))
       await downloadReport(node, fileBase, downloadFormat, reportCss)
-      setDownloadOpen(false)
     } catch {
-      setDownloadError('Could not prepare the download. Try again.')
+      setDownloadError(
+        'Could not prepare the download. Try PDF format, then try again.',
+      )
+      setDownloadOpen(true)
     } finally {
       sheet.classList.remove('is-capturing')
       setDownloading(false)

@@ -850,18 +850,21 @@ export default function Overview() {
     }
     setDownloading(true)
     setDownloadError(null)
+    setDownloadOpen(false)
     sheet.classList.add('is-capturing')
     try {
-      await new Promise((resolve) => requestAnimationFrame(() => resolve(null)))
+      await new Promise((resolve) => window.setTimeout(resolve, 120))
       await downloadReport(
         node,
         reportFileBase,
         downloadFormat,
         `${overviewReportCss}\n${overviewReportExtraCss}\n${resultSlipCss}\n${allSubjectsProgressCss}`,
       )
-      setDownloadOpen(false)
     } catch {
-      setDownloadError('Could not prepare the download. Try again.')
+      setDownloadError(
+        'Could not prepare the download. Try PDF, or print fewer students at a time.',
+      )
+      setDownloadOpen(true)
     } finally {
       sheet.classList.remove('is-capturing')
       setDownloading(false)
